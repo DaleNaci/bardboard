@@ -9,7 +9,7 @@
     <h1>DM Soundboard</h1>
 
     {% for sound in sounds %}
-        <button onclick="playSound('{{ sound }}')"></button><br>
+        <button onclick="playSound('{{ sound }}')">{{ sound }}</button><br>
     {% endfor %}
 
     <script>
