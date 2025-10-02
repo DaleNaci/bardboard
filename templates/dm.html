@@ -16,6 +16,9 @@
         const socket = io();
 
         function playSound(filename) {
+            const audio = new Audio("/static/sounds/" + filename);
+            audio.play();
+
             socket.emit("play_sound", { filename: filename });
         }
     </script>
