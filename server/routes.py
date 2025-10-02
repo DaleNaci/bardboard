@@ -1,12 +1,16 @@
 import os
 from flask import render_template, current_app
 
+from .soundboard import Soundboard
 
-def init_app(app):
+
+def init_app(app, socketio):
+    global soundboard_instance
+    soundboard_instance = Soundboard(socketio)
+
     @app.route("/dm")
     def dm_page():
-        folder = os.path.join(current_app.root_path, "static", "sounds")
-        sounds = [f for f in os.listdir(folder)]
+        sounds = soundboard_instance.get_sounds()
 
         return render_template("dm.html", sounds=sounds)
     
