@@ -15,6 +15,10 @@ def init_socket(socketio: SocketIO):
 
         emit("state_update", state, broadcast=True)
     
+    @socketio.on("play_sound")
+    def handle_play_sound(data):
+        emit("play_sound", data, broadcast=True)
+    
     @socketio.on("disconnect")
     def handle_disconnect():
         print("Client disconnected.")

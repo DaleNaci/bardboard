@@ -2,10 +2,19 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Player Screen</title>
+    <script src="https://cdn.socket.io/4.8.1/socket.io.min.js"></script>
 </head>
 <body>
-    
+    <h1>Player Screen</h1>
+
+    <script>
+        const socket = io();
+
+        socket.on("play_sound", (data) => {
+            const audio = new Audio("/static/sounds/" + data.filename);
+            audio.play();
+        });
+    </script>
 </body>
 </html>
